@@ -1,0 +1,30 @@
+[user]
+  name = Vinícius Garcia
+  email = vingarcia00@gmail.com
+[push]
+	default = simple
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+  ui = true
+  pager = true
+[core]
+  excludesfile = ~/.gitignore
+  editor = vim
+[alias]
+  cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|production' | xargs -n 1 git branch -d"
+  edit-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; vim `f`"
+  add-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; git add `f`"
+	permission-reset = !git diff -p -R --no-ext-diff --no-color | grep -E \"^(diff|(old|new) mode)\" --color=never | git apply
+[url "ssh://git@gitlab.wearelayer.com/"]
+	insteadOf = https://gitlab.wearelayer.com/
+[pull]
+	rebase = false
+[init]
+	defaultBranch = master
+[advice]
+  detachedHead = false
+[log]
+	date = iso
